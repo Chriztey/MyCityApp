@@ -3,6 +3,7 @@ package com.chris.mycityapp.screen
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -39,7 +40,8 @@ fun TopAppBar(
     hasBackStack: Boolean,
     navigateUp: () -> Unit = {}
 ) {
-    androidx.compose.material3.TopAppBar(
+
+    CenterAlignedTopAppBar(
         title = { Text(text = currentScreen.title)},
         navigationIcon = {
             if(hasBackStack) {
@@ -94,7 +96,7 @@ fun CityAppScreen(
                     "Restaurant" -> DataSource.restaurants
                     "Hotel" -> DataSource.hotels
                     "Bar" -> DataSource.bars
-                    else -> DataSource.parks
+                    else -> DataSource.foods
                 }
 
                 ) {

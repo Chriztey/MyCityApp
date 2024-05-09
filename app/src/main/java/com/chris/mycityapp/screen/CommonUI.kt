@@ -14,7 +14,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,10 +38,14 @@ fun ItemDisplay(
     onClick: () -> Unit,
     name: String,
     @DrawableRes image: Int,
-
+    shortText: String = ""
 ) {
    // Column(verticalArrangement = Arrangement.SpaceEvenly) {
-        Card(onClick = onClick) {
+        Card(
+            onClick = onClick,
+            elevation = CardDefaults.cardElevation(16.dp)
+
+        ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
@@ -48,15 +54,23 @@ fun ItemDisplay(
                     painter = painterResource(id = image),
                     contentDescription = "",
                     modifier = Modifier
-                        .size(height = 100.dp, width = 100.dp)
+                        .size(height = 120.dp, width = 120.dp)
                         .padding(5.dp)
                         .clip(shape = RoundedCornerShape(10.dp)),
                     contentScale = ContentScale.Crop
                 )
-                Spacer(modifier = Modifier.width(10.dp))
-                Text(
-                    text = name
-                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Column(modifier = Modifier.padding(end = 5.dp)) {
+                    Text(
+                        text = name,
+                        style = MaterialTheme.typography.titleSmall
+                    )
+                    Spacer(modifier = Modifier.width(1.dp))
+                    Text(
+                        text = shortText,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
             }
         }
    // }
@@ -66,7 +80,7 @@ fun ItemDisplay(
 @Composable
 fun ItemPreview() {
     MyCityAppTheme {
-        ItemDisplay({}, "a", R.drawable.ic_launcher_background)
+        ItemDisplay({}, "a", R.drawable.ic_launcher_background, shortText = "nug cafe serving traditional Japanese confections, cakes and matcha in a charming setting")
 
     }
 }
