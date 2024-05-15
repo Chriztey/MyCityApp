@@ -13,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -22,10 +20,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.chris.mycityapp.R
 import com.chris.mycityapp.data.DataSource
 import com.chris.mycityapp.model.CityAppViewModel
 import com.chris.mycityapp.ui.theme.MyCityAppTheme
+
 
 enum class MyCityAppScreen(var title: String ) {
     MyCityApp("My City App"),
@@ -128,3 +126,8 @@ fun AppPreview() {
 
     }
 }
+
+
+
+
+
